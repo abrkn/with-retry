@@ -5,7 +5,7 @@ const defaultGetDelayForRetry = retry =>
   1000 * Math.pow(2, retry) + Math.random() * 100;
 
 const withRetry = (target, options = {}) => {
-  const optionsWithDefaults = {
+  const { maxRetries, shouldRetry, getDelayForRetry } = {
     maxRetries: 5,
     shouldRetry: () => true,
     getDelayForRetry: defaultGetDelayForRetry,
